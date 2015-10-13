@@ -21,13 +21,13 @@ I restructured the project bootstrap to clearly define the boundary between clie
 ```
 ##### Client
 ```javascript
+// config/client.webpack.config.js
   ...
   include: [
     path.resolve(__dirname, '../src/client'),
     path.resolve(__dirname, '../src/shared'),
   ],
   ...
-// config/server.webpack.config.js
 ```
 
 ### Build System
