@@ -80,7 +80,7 @@ export default async function() {
 ```
 The key here is that both the `Bundler` task and the `BrowserSync` task will use the webpack configurations to transpile to ES6. <br/><br/>
 The `Bundler` task will run webpack with the 2 [configurations](./config/) and produce a build output that is ready to run, `node build/server.js` or by loading `build/client.js` as a script in your web application. <br/><br/>
-The `BrowserSync` task will spin up a new webserver that proxies our existing server and injects the BrowserSync code snippet. We pass our webpack configuration as middleware to BrowserSync so that we can hot reloads on all our devices.
+The `BrowserSync` task will spin up a new webserver that proxies our existing server (started by the Server task) and injects the BrowserSync code snippet. We pass our webpack configuration as middleware to BrowserSync so that we can hot reloads on all our devices.
 <br/>
 ### Routing
 It is important to know that we're using 2 routing frameworks. Express and [@koistya](https://twitter.com/koistya)'s [React Routing][1], with Express handling our server side routing on Node and React Routing handling the routing on the client and also on the server.<br/>
