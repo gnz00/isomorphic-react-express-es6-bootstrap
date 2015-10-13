@@ -1,8 +1,8 @@
 ## Simple Isomorphic React/Express ES6 Bootstrap
 This repo is a restructured and pared down version of [React Starter Kit][0]. <br/>
 All credit goes to <b>Konstantin Tarkus</b> ([@koistya](https://twitter.com/koistya)) and [contributors](https://github.com/kriasoft/react-starter-kit/graphs/contributors). <br/><br/>
-[Come chat on Gitter!](https://gitter.im/maysale01/Simple-Isomorphic-React-Express-ES6-Bootstrap)
-<br/>
+<b>[Come chat on Gitter!](https://gitter.im/maysale01/Simple-Isomorphic-React-Express-ES6-Bootstrap)</b>
+<br/></br>
 I learned React and Webpack using [React Starter Kit][0], but I found a few things confusing: <br/>
   * [How do I discern between client-side and server-side?](#isomorphic-structure) </br>
   * [What all is the build system doing?](#build-system) <br/>
