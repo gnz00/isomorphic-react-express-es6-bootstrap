@@ -12,6 +12,8 @@ export default new Task('server', function() {
       silent: false,
     });
 
+    // We need to know when the server has completed it's initial setup so we can launch browser sync.
+    // We're sending this message manually in ../build/server.js
     server.once('message', message => {
       if (message.match(/^online$/)) {
         resolve();

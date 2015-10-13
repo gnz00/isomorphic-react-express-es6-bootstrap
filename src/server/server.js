@@ -14,7 +14,7 @@ import Router from '../shared/routes';
 import Html from '../shared/components/Html';
 
 const server = global.server = express();
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 5000;
 
 server.use(express.static('build/public'));
 
@@ -37,11 +37,14 @@ server.get('*', async (req, res, next) => {
       onPageNotFound: () => statusCode = 404,
     };
 
+    // Router is an instance of React Router.
+    // Dispatch will retrieve the appropriate state and root component for the path provided.
     await Router.dispatch({ path: req.path, context }, (state, component) => {
       data.body = ReactDOM.renderToString(component);
       data.css = css.join('');
     });
 
+    // Wrap our component with the root Html layout component
     const html = ReactDOM.renderToStaticMarkup(<Html {...data} />);
     res.status(statusCode).send('<!doctype html>\n' + html);
   } catch (err) {

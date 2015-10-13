@@ -5,6 +5,7 @@ import webpack from 'webpack';
 import Task from '../src/shared/utils/Task';
 
 import clientWebpackConfig from '../config/client.webpack.config';
+import serverWebpackConfig from '../config/server.webpack.config';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 
@@ -27,7 +28,7 @@ export default new Task('browserSync', () => new Promise((resolve, reject) => {
     browserSync({
       proxy: {
 
-        target: 'localhost:8080',
+        target: 'localhost:5000',
 
         middleware: [
           webpackDevMiddleware(bundler, {
