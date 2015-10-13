@@ -3,9 +3,32 @@ This repo is a restructured and pared down version of [React Starter Kit][0]. <b
 All credit goes to <b>Konstantin Tarkus</b> ([@koistya](https://twitter.com/koistya)) and [contributors](https://github.com/kriasoft/react-starter-kit/graphs/contributors). <br/>
 <br/>
 I learned React and Webpack using [React Starter Kit][0], but I found a few things confusing: <br/>
-  * How to discern between client-side and server-side </br>
+  * [How to discern between client-side and server-side](#isomorphic-structure) </br>
   * [What the build system is doing](#build-system) <br/>
-  * Where are routes defined?
+  * [Where are routes defined?](#routing)
+
+### Isomorphic Structure
+I restructured the project bootstrap to clearly define the boundary between client/server.
+##### Server
+```javascript
+// config/server.webpack.config.js
+  ...
+  include: [
+    path.resolve(__dirname, '../src/server'),
+    path.resolve(__dirname, '../src/shared'),
+  ],
+  ...
+```
+##### Client
+```javascript
+  ...
+  include: [
+    path.resolve(__dirname, '../src/client'),
+    path.resolve(__dirname, '../src/shared'),
+  ],
+  ...
+// config/server.webpack.config.js
+```
 
 ### Build System
 The primary entrypoint is in `package.json`:
