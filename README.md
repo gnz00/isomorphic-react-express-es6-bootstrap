@@ -155,14 +155,20 @@ export default router;
 The rule definitions are very similar to Express. You can fetch data and pass it to your components here depending on if you're using a Fluxible solution or not.
 
 #### Todo
-* Pick model framework implementation
-* Pick Flux implementation
-* Pick resource implementation
-* Add Ember Data style serialzier/adapter (JSONAPI)
-* Implement tracking pixel
-* Add prod configurations
-* Document decorators
-
+* Client
+  - Implement Relay
+  - Implement Flux
+  - Implement JSONAPI serializer/adapter
+  - Implement tracking pixel
+  - Implement [formatjs](http://formatjs.io/react/)
+* Server
+  - Implement DBAL w/ JSONAPI
+    - Models, Resources, Collections
+  - Implement logging
+  - Implement instrumentation
+* Project
+  - Document decorators
+  - Add production configs
 
 [0]: http://www.reactstarterkit.com
 [1]: https://github.com/kriasoft/react-routing

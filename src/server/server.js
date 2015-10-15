@@ -1,26 +1,16 @@
-
 import 'babel/polyfill';
 import express from "express";
-import httpProxy from 'http-proxy';
 import path from 'path';
-
-// Utilities
-import logger from '../shared/utils/logger';
-import blocked from 'blocked';
 
 // Middleware
 import morgan from 'morgan';
 
 // React
-import React from 'react';
 import ReactDOM from 'react-dom/server';
 import Router from '../shared/routes';
-import Html from '../shared/components/Html';
 
-// Let us know if we block the event loop
-blocked(function(ms){
-  logger.warn('BLOCKED FOR %sms', ms | 0);
-});
+// Our root layout component
+import Html from '../shared/components/Html';
 
 const server = global.server = express();
 const port = process.env.PORT || 5000;
@@ -28,7 +18,6 @@ const port = process.env.PORT || 5000;
 server.use(express.static('build/public'));
 
 // Register 3rd party middleware
-//
 server.use(morgan('combined'));
 
 // Register API middleware
