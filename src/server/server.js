@@ -4,10 +4,11 @@ import express from "express";
 import httpProxy from 'http-proxy';
 import path from 'path';
 
+// Utilities
 import logger from '../shared/utils/logger';
 import blocked from 'blocked';
 
-// middleware
+// Middleware
 import morgan from 'morgan';
 
 // React

@@ -8,6 +8,8 @@ import ErrorPage from './components/pages/ErrorPage';
 import NotFoundPage from './components/pages/NotFoundPage';
 
 const router = new Router(on => {
+
+  // Wrap all the requests with App
   on('*', async (state, next) => {
     const component = await next();
     return component && <App context={state.context}>{component}</App>;
