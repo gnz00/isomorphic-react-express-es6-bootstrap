@@ -50,10 +50,7 @@ export default {
   ],
 
   resolve: {
-    extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx'],
-    alias: {
-      "react-routing$": "react-routing004fix"
-    }
+    extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx']
   },
 
   module: {

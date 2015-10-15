@@ -61,10 +61,7 @@ export default {
   ],
 
   resolve: {
-    extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx'],
-    alias: {
-      "react-routing$": "react-routing004fix"
-    }
+    extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx']
   },
 
   module: {
@@ -98,10 +95,7 @@ export default {
 
   externals: [
     function filter(context, request, cb) {
-      const isExternal =
-        request.match(/^[a-z][a-z\/\.\-0-9]*$/i) &&
-        !request.match(/^react-routing/) &&
-        !context.match(/[\\/]react-routing/);
+      const isExternal = request.match(/^[a-z][a-z\/\.\-0-9]*$/i);
       cb(null, Boolean(isExternal));
     },
   ],

@@ -10,19 +10,6 @@ import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 
 // Run a dev server with Browser Sync
-/*
-  ES5
-  module.exports = new Task('browserSync', function() {
-    return new Promise(function(resolve, reject) {
-      ...
-    });
-  });
-
-  ES6
-  export default new Task('browserSync', () => new Promise((resolve, reject) => {
-    ...
-  });
- */
 export default new Task('browserSync', () => new Promise((resolve, reject) => {
     let bundler = webpack(clientWebpackConfig);
     let bs = browserSync.create().init({
