@@ -1,17 +1,25 @@
+
 import 'babel/polyfill';
 import express from "express";
 import httpProxy from 'http-proxy';
 import path from 'path';
 
-import React from 'react';
-import ReactDOM from 'react-dom/server';
+import logger from '../shared/utils/logger';
+import blocked from 'blocked';
 
 // middleware
 import morgan from 'morgan';
 
-import Task from '../shared/utils/Task';
+// React
+import React from 'react';
+import ReactDOM from 'react-dom/server';
 import Router from '../shared/routes';
 import Html from '../shared/components/Html';
+
+// Let us know if we block the event loop
+blocked(function(ms){
+  logger.warn('BLOCKED FOR %sms', ms | 0);
+});
 
 const server = global.server = express();
 const port = process.env.PORT || 5000;
@@ -19,6 +27,7 @@ const port = process.env.PORT || 5000;
 server.use(express.static('build/public'));
 
 // Register 3rd party middleware
+//
 server.use(morgan('combined'));
 
 // Register API middleware
@@ -54,7 +63,7 @@ server.get('*', async (req, res, next) => {
 
 // Launch Server
 server.listen(port, () => {
-  console.log('Listening on port: ' + port);
+  logger.info('Listening on port: ' + port);
   if (process.send) {
     process.send('online');
   }

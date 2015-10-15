@@ -18,7 +18,8 @@ const router = new Router(on => {
   });
 
   on('error', (state, error) => {
-    console.log(error);
+    if (console && typeof console.error == "function")
+      console.error(error);
     return state.statusCode === 404 ?
       <App context={state.context} error={error}><NotFoundPage /></App> :
       <App context={state.context} error={error}><ErrorPage /></App>

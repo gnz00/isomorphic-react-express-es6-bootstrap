@@ -1,6 +1,6 @@
 /*! React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
 
-export function addEventListener(node, event, listener) {
+export const addEventListener = (node, event, listener) => {
   if (node.addEventListener) {
     node.addEventListener(event, listener, false);
   } else {
@@ -8,10 +8,16 @@ export function addEventListener(node, event, listener) {
   }
 }
 
-export function removeEventListener(node, event, listener) {
+export const removeEventListener = (node, event, listener) => {
   if (node.removeEventListener) {
     node.removeEventListener(event, listener, false);
   } else {
     node.detachEvent('on' + event, listener);
   }
 }
+
+export default {
+  addEventListener,
+  removeEventListener
+};
+

@@ -6,7 +6,7 @@ export default function() {
   // Register API routes here
   api.get('/', (req, res) => {
     return res.json({
-      version : '1.0'
+      version : '0.0'
     });
   });
 

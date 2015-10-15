@@ -25,7 +25,7 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
  */
 export default new Task('browserSync', () => new Promise((resolve, reject) => {
     let bundler = webpack(clientWebpackConfig);
-    browserSync({
+    let bs = browserSync.create().init({
       proxy: {
 
         target: 'localhost:5000',
@@ -57,7 +57,7 @@ export default new Task('browserSync', () => new Promise((resolve, reject) => {
         'build/templates/**/*.*',
       ],
     }, () => {
-      resolve();
+      resolve(bs);
     });
   })
 );

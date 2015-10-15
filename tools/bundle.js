@@ -21,10 +21,13 @@ export default new Task('bundle', function() {
         return reject(err);
       }
 
-      // Print out the stats for this run through the bundler
-      stats.stats.forEach((element, index) => {
-        console.log(element.toString(config[index].stats));
-      });
+      if (stats.stats !== undefined) {
+        stats.stats.forEach((element, index) => {
+          console.log(element.toString(config[index].stats));
+        });
+      } else {
+        console.log(stats.toString(config[0].stats));
+      }
 
       // Resolve promise if tall the bundle configurations have been processed
       if (++bundlerRunCount === (global.WATCH ? config.length : 1)) {
@@ -32,7 +35,7 @@ export default new Task('bundle', function() {
       }
     }
 
-    // Kick off the bundle process
+    // Watch for changes
     if (global.WATCH) {
       bundler.watch(200, bundle);
     } else {

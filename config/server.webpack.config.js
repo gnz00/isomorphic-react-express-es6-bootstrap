@@ -52,19 +52,19 @@ export default {
 
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-    new webpack.BannerPlugin(
-      'require("source-map-support").install();',
-      { raw: true, entryOnly: false }
-    ),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development')
-    })
+      'process.env.NODE_ENV': global.DEBUG ? '"development"' : '"production"',
+      __DEV__: global.DEBUG,
+    }),
+    new webpack.BannerPlugin('require("source-map-support").install();',
+      { raw: true, entryOnly: false }),
   ],
 
   resolve: {
     extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx'],
+    alias: {
+      "react-routing$": "react-routing004fix"
+    }
   },
 
   module: {
@@ -98,7 +98,11 @@ export default {
 
   externals: [
     function filter(context, request, cb) {
-      cb(null, Boolean(request.match(/^[a-z][a-z\/\.\-0-9]*$/i)));
+      const isExternal =
+        request.match(/^[a-z][a-z\/\.\-0-9]*$/i) &&
+        !request.match(/^react-routing/) &&
+        !context.match(/[\\/]react-routing/);
+      cb(null, Boolean(isExternal));
     },
   ],
 

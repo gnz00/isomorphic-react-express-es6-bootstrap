@@ -4,6 +4,7 @@ class ErrorPage extends Component {
   render() {
     return (
       <div className="ErrorPage ">
+        Error!
       </div>
     );
   }

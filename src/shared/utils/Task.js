@@ -1,4 +1,4 @@
-import format from './format-time';
+import { format } from './timeUtils';
 
 class Task {
   constructor(name, fn, args = []) {
@@ -22,10 +22,10 @@ class Task {
   async run() {
     this.start = new Date();
     console.log(`[${format(this.start)}] Starting '${this.name}'...`);
-    await this.fn();
+    let rv = await this.fn();
     this.end = new Date();
     console.log(`[${format(this.end)}] Finished '${this.name}' after ${this.elapsed} ms`);
-    return this.elasped;
+    return rv;
   }
 
 }

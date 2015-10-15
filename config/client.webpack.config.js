@@ -16,7 +16,10 @@ export default {
 
   devtool: 'cheap-module-eval-source-map',
 
-  entry: path.join(__dirname, '../src/client/client.js'),
+  entry: [
+    'webpack-hot-middleware/client',
+    path.join(__dirname, '../src/client/client.js')
+  ],
 
   output: {
     publicPath: '/',
@@ -48,6 +51,9 @@ export default {
 
   resolve: {
     extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx'],
+    alias: {
+      "react-routing$": "react-routing004fix"
+    }
   },
 
   module: {
